@@ -7,6 +7,8 @@ import Tickets from "Pages/Tickets/Tickets";
 import TicketDetails from "Pages/Tickets/TicketDetails";
 import Report from "Pages/Reports/Report";
 
+import UserManagement from "Pages/Settings/UserManagement";
+
 function App() {
   return (
     <Router>
@@ -40,6 +42,10 @@ function App() {
 
           <PrivateRoute path="/reports">
             <Report />
+          </PrivateRoute>
+
+          <PrivateRoute path="/settings">
+            <UserManagement />
           </PrivateRoute>
         </Switch>
       </div>

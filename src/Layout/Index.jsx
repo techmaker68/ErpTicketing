@@ -5,6 +5,8 @@ import { ReactComponent as TenantsIcon } from "Assets/icons/tenants.svg";
 import { ReactComponent as RequestsIcon } from "Assets/icons/requests.svg";
 import { ReactComponent as ManagementIcon } from "Assets/icons/management.svg";
 import { ReactComponent as SettingsIcon } from "Assets/icons/setting.svg";
+
+// import SettingIcon from "../Assets/icons/Icon material-settings (1).svg";
 import ProfileIcon from "Assets/icons/profile.svg";
 import DownIcon from "Assets/icons/downIcon.svg";
 import { Menu, Dropdown } from "antd";
@@ -27,6 +29,7 @@ const Index = ({ children, title, currentPage }) => {
     { title: "Dashboard", url: "/dashboard", icon: <DashboardIcon /> },
     { title: "Tickets", url: "/tickets", icon: <PaymentsIcon /> },
     { title: "Reports", url: "/Reports", icon: <TenantsIcon /> },
+    { title: "Settings", url: "/settings", icon: <SettingsIcon /> },
   ];
 
   return (

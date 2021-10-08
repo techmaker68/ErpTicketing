@@ -2764,3 +2764,83 @@ input {
   background-color: #1768ac !important;
   border-color: #1768ac !important;
 }
+
+// ===============================================================
+// ============================Settings css=======================
+// ========================================================================contact
+.settings-wrap .ant-tabs-tab-btn {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  outline: none;
+  transition: all 0.3s;
+
+  letter-spacing: 0px;
+  color: #22241f;
+  opacity: 1;
+}
+
+.settings-wrap .ant-tabs-tab + .ant-tabs-tab {
+  margin: 0 0 0 80px !important;
+}
+
+.settings-wrap .search-input {
+  width: 253px;
+  height: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+}
+
+.settings-wrap .btn-create {
+  width: 144px;
+  height: 36px;
+  background: #1768ac 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.settings-wrap .btn-create:active {
+  outline: none !important;
+  width: 144px;
+  height: 36px;
+  background: #1768ac 0% 0% no-repeat padding-box !important;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.settings-wrap .btn-create:focus {
+  outline: none !important;
+  width: 144px;
+  height: 36px;
+  background: #1768ac 0% 0% no-repeat padding-box !important;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+th,
+thead {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  background: D6EDFF;
+  background: #d6edff !important;
+  text-align: left;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  text-align: center !important;
+}
+
+.setting-wrap td,
+tr {
+  text-align: center !important;
+}
