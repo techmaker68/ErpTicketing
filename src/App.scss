@@ -3280,4 +3280,71 @@ tr {
   font-size: 16px;
   font-weight: 700;
   color: #000000;
+  margin-bottom: 0px;
+}
+
+.ticket-settings .t2 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  color: #5e5e5e;
+}
+
+.ticket-settings .t3 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0px;
+}
+
+.ticket-settings .btns-wrap {
+  margin-top: 0px !important;
+
+  float: right;
+}
+
+.ticket-settings .btn-cancel {
+  width: 96px;
+  height: 36px;
+  border: 1px solid #1768ac;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1768ac;
+}
+
+.ticket-settings .btn-create {
+  width: 96px;
+  height: 36px;
+  border: 1px solid #1768ac;
+  background: #1768ac 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-left: 16px;
+}
+
+.ticket-settings .response-time-wrap {
+  margin-top: 26px;
+}
+
+.ticket-settings .time-d {
+  width: 114px;
+  height: 37px;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  opacity: 1;
+  margin-top: 18px;
+  padding: 10px 3px 10px 31px;
+}
+
+.first-response-time h1 {
+  font-size: 12px;
+}
+.first-response-time p {
+  font-size: 12px;
 }
