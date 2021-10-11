@@ -2823,6 +2823,17 @@ input {
   font-weight: 700;
   color: #ffffff;
 }
+.settings-wrap .btn-create:hover {
+  outline: none !important;
+  width: 144px;
+  height: 36px;
+  background: #1768ac 0% 0% no-repeat padding-box !important;
+  border-radius: 4px;
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+}
 
 th,
 thead {
@@ -2843,4 +2854,430 @@ thead {
 .setting-wrap td,
 tr {
   text-align: center !important;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+  display: none !important;
+  /* display: inline-block; */
+  margin-right: 12px !important;
+  font-size: 12px;
+  vertical-align: -1px;
+}
+
+.settings-wrap .ant-collapse > .ant-collapse-item:last-child,
+.ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+  border-radius: 0 0 2px 2px;
+
+  background: #186bb1;
+
+  border: 1px solid #186bb1 !important;
+}
+
+.ant-collapse-borderless
+  > .ant-collapse-item
+  > .ant-collapse-content
+  > .ant-collapse-content-box {
+  // padding-top: 4px;
+
+  background: #125c9b 0% 0% no-repeat padding-box !important;
+  border-radius: 0px 0px 0px 8px !important;
+  border: none !important;
+}
+
+.ant-collapse-borderless {
+  /* background-color: #fafafa; */
+  border: 0;
+  background: #125c9b !important;
+  border-bottom: none !important;
+}
+
+.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content {
+  background-color: #125c9b !important;
+  border-top: 0;
+}
+
+// =========================================================
+// =======================create team modal===================
+// ================================================================
+.create-team-model .ant-modal-content {
+  width: 738px;
+  height: 681px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  opacity: 1;
+}
+.create-team-model .mt1 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.create-team-model .tm-input {
+  width: 214px !important;
+  height: 48px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px !important;
+}
+
+.create-team-model
+  .ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 48px !important;
+
+  width: 214px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0px !important;
+  color: #000000 !important;
+  opacity: 1;
+  border-radius: 4px !important;
+}
+
+.create-team-model .sugggestion-wrap {
+  margin-top: 12px;
+}
+
+.create-team-model .suggestion-box {
+  width: 79px;
+  height: 19px;
+  background: #ebebeb 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  opacity: 1;
+
+  margin-right: 23px;
+}
+
+.create-team-model .t1 {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.create-team-model .ant-form-item {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum", "tnum";
+  margin-bottom: 0px !important;
+  vertical-align: top;
+}
+
+.create-team-model .checks-wrap {
+  margin-top: 44px;
+}
+
+.create-team-model .ant-switch-handle::before {
+  position: absolute;
+  top: 0;
+  right: 4px !important;
+  bottom: 0 !important;
+  left: -4px !important;
+  background-color: #fff;
+  border-radius: 9px;
+  transition: all 0.2s ease-in-out;
+  content: "";
+}
+
+.create-team-model .mt2 {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0px;
+}
+
+.create-team-model .ant-radio-inner::after {
+  width: 6px !important;
+  height: 6px !important;
+  top: 2px !important;
+  left: 2px !important;
+}
+
+.create-team-model .ant-radio-inner {
+  width: 14px !important;
+  height: 14px !important;
+  border-width: 2px !important;
+}
+
+.create-team-model .ant-form label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.create-team-model .radio-wrap {
+  margin-top: 25px !important;
+
+  margin-left: 52px !important;
+}
+
+.create-team-model .input-num {
+  width: 112px;
+  height: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+
+  margin-top: 15px;
+  margin-left: 23px;
+}
+
+.create-team-model .btns-wrap {
+  float: right;
+}
+
+.create-team-model .btn-cancel {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1768ac !important;
+}
+
+.create-team-model .btn-create {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  background: #1768ac;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: white !important;
+}
+// =====================================================
+// =======================create user modal============
+// ======================================================
+
+.create-user-model .mt1 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.create-user-model .ant-modal-content {
+  width: 738px;
+  height: 376px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 8px;
+}
+
+.create-user-model .tm-input {
+  width: 214px !important;
+  height: 48px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px !important;
+}
+
+.create-user-model
+  .ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 48px !important;
+
+  width: 214px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0px !important;
+  color: #000000 !important;
+  opacity: 1;
+  border-radius: 4px !important;
+}
+
+.create-user-model .btns-wrap {
+  float: right;
+}
+
+.create-user-model .btn-cancel {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1768ac !important;
+}
+
+.create-user-model .btn-create {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  background: #1768ac;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: white !important;
+}
+// ================================================
+// ============================create role modal==
+// ================================================
+
+.create-role-modal .ant-modal-content {
+  width: 735px;
+  height: 499px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 8px;
+}
+
+.create-role-modal .mt1 {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.create-role-modal .tm-input {
+  width: 214px !important;
+  height: 48px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px !important;
+}
+
+.create-role-modal .btns-wrap {
+  float: right !important;
+}
+
+.create-role-modal .btn-cancel {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1768ac !important;
+}
+
+.create-role-modal .btn-create {
+  width: 96px;
+  margin-right: 16px;
+  height: 36px;
+  background: #1768ac;
+  border: 1px solid #1768ac !important;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center !important;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: white !important;
+}
+
+.create-role-modal .checks-wrap {
+  width: 203px;
+  height: 339px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  overflow-y: scroll;
+  padding: 19px 29px 14px 21px;
+}
+
+.create-role-modal .quill {
+  width: 444px !important;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+}
+
+.create-role-modal .settings-wrap .ant-collapse > .ant-collapse-item:last-child,
+.ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+  border-radius: 0 0 2px 2px;
+  background: white;
+  border: none !important;
+
+  font-size: 12px !important;
+
+  font-weight: 12px !important;
+  color: #000000;
+}
+
+.create-role-modal
+  .ant-collapse-borderless
+  > .ant-collapse-item
+  > .ant-collapse-content
+  > .ant-collapse-content-box {
+  background: white 0% 0% no-repeat padding-box !important;
+  border: none !important;
+}
+
+.create-role-modal
+  .ant-collapse-borderless
+  > .ant-collapse-item
+  > .ant-collapse-content
+  > .ant-collapse-content-box {
+  background: white 0% 0% no-repeat padding-box !important;
+  border-radius: 0px 0px 0px 0px !important;
+  border: none !important;
+}
+
+.create-role-modal
+  .ant-collapse
+  > .ant-collapse-item
+  > .ant-collapse-header
+  .ant-collapse-arrow {
+  // display: block !important;
+  display: inline-block !important;
+  margin-right: 12px !important;
+  font-size: 12px !important;
+}
+
+// =====================================================
+// Ticket settings css==================================
+// ====================================================
+.ticket-settings .ant-tabs-tab-btn {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  outline: none;
+  transition: all 0.3s;
+
+  letter-spacing: 0px;
+  color: #22241f;
+  opacity: 1;
+}
+
+.ticket-settings .ant-tabs-tab + .ant-tabs-tab {
+  margin: 0 0 0 80px !important;
+}
+
+.ticket-settings .t1 {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
 }

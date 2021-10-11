@@ -9,8 +9,10 @@ import { ReactComponent as SettingsIcon } from "Assets/icons/setting.svg";
 // import SettingIcon from "../Assets/icons/Icon material-settings (1).svg";
 import ProfileIcon from "Assets/icons/profile.svg";
 import DownIcon from "Assets/icons/downIcon.svg";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown, Collapse } from "antd";
 import { Link } from "react-router-dom";
+
+const { Panel } = Collapse;
 
 // profile menu
 
@@ -29,7 +31,15 @@ const Index = ({ children, title, currentPage }) => {
     { title: "Dashboard", url: "/dashboard", icon: <DashboardIcon /> },
     { title: "Tickets", url: "/tickets", icon: <PaymentsIcon /> },
     { title: "Reports", url: "/Reports", icon: <TenantsIcon /> },
-    { title: "Settings", url: "/settings", icon: <SettingsIcon /> },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: <SettingsIcon />,
+      children: [
+        { title: "User Managemnet", url: "/settings", icon: <SettingsIcon /> },
+        { title: "Tickets", url: "/settings/tickets", icon: <SettingsIcon /> },
+      ],
+    },
   ];
 
   return (
@@ -44,17 +54,61 @@ const Index = ({ children, title, currentPage }) => {
         {
           // nav links
         }
+
         <ul>
           {navLinks.map((link, index) => {
             return (
-              <li
-                key={link.title}
-                className={currentPage === index ? "li-active" : ""}
-              >
-                <Link to={link.url}>
-                  {link.icon} {link.title}
-                </Link>
-              </li>
+              <div>
+                {!link.children ? (
+                  <li
+                    key={link.title}
+                    className={currentPage === index ? "li-active" : ""}
+                  >
+                    <Link to={link.url}>
+                      {link.icon} {link.title}
+                    </Link>
+                  </li>
+                ) : (
+                  <Collapse expandIcon={false} bordered={false}>
+                    <Panel
+                      key="1"
+                      header={
+                        <span
+                          style={{
+                            fontSize: "16px",
+                            padding: "14px 16px !important",
+                            borderRadius: "8px 0px 0px 8px",
+                            color: "white",
+                            cursor: "pointer",
+                            height: "47px",
+                            marginBottom: "10px !important",
+                          }}
+                        >
+                          {link.title}
+                        </span>
+                      }
+                    >
+                      <Collapse defaultActiveKey="1" bordered={false}>
+                        {link.children.map((child) => {
+                          return (
+                            <div
+                              header=""
+                              key="1"
+                              style={{
+                                fontSize: "14px",
+                                color: "#FFFFFF",
+                                marginTop: "11px",
+                              }}
+                            >
+                              <Link to={child.url}>{child.title}</Link>
+                            </div>
+                          );
+                        })}
+                      </Collapse>
+                    </Panel>
+                  </Collapse>
+                )}
+              </div>
             );
           })}
         </ul>

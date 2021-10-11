@@ -8,6 +8,7 @@ import TicketDetails from "Pages/Tickets/TicketDetails";
 import Report from "Pages/Reports/Report";
 
 import UserManagement from "Pages/Settings/UserManagement";
+import TicketSetting from "Pages/Settings/TicketSetting";
 
 function App() {
   return (
@@ -40,12 +41,16 @@ function App() {
             // Reports
           }
 
-          <PrivateRoute path="/reports">
+          <PrivateRoute path="/reports" exact>
             <Report />
           </PrivateRoute>
 
-          <PrivateRoute path="/settings">
+          <PrivateRoute path="/settings" exact>
             <UserManagement />
+          </PrivateRoute>
+
+          <PrivateRoute path="/settings/tickets" exact>
+            <TicketSetting />
           </PrivateRoute>
         </Switch>
       </div>
