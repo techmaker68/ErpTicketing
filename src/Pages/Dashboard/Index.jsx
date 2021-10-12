@@ -1,6 +1,15 @@
 import Layout from "Layout/Index.jsx";
-import {DatePicker, Button, Dropdown, Menu} from "antd";
-import DateIcon from "Assets/icons/datepicker.svg";
+
+import {
+  DatePicker,
+  Button,
+  Dropdown,
+  Menu,
+  Select,
+  Progress,
+  Tabs,
+} from "antd";
+import DateIcon from "../../Assets/icons/XMLID_12_.svg";
 import Separator from "Assets/icons/seperator.svg";
 import Print from "Assets/icons/print.svg";
 import ArrowGraphIcon from "Assets/icons/arrowGraph.svg";
@@ -11,160 +20,334 @@ import TicketHeatMap from "Components/Dashboard/TicketHeatMap";
 import CustomerOverview from "Components/Dashboard/CustomerOverview";
 import PurchasingProduct from "Components/Dashboard/PurchasingProduct";
 import ArrowDown from "Assets/icons/arrowDownDarkBlue.svg";
+import PieMap from "Components/Dashboard/PieMap";
 
-const {RangePicker} = DatePicker;
+import RedFlag from "../../Assets/icons/Group 3072.svg";
+import GreenFlag from "../../Assets/icons/Group 3071.svg";
+import BlueFlag from "../../Assets/icons/Group 3070.svg";
+import GreenTickIcon from "../../Assets/icons/Icon awesome-check.svg";
+
+import { useState } from "react";
+
+const { RangePicker } = DatePicker;
 
 const Index = () => {
+  const { TabPane } = Tabs;
   const menu = (
     <Menu>
-      <Menu.Item key='1'>PDF</Menu.Item>
+      <Menu.Item key="1">PDF</Menu.Item>
       <Menu.Divider />
-      <Menu.Item key='2'>CSV</Menu.Item>
+      <Menu.Item key="2">CSV</Menu.Item>
     </Menu>
   );
+  const { Option } = Select;
   return (
-    <Layout title='Dashboard' currentPage={0}>
-      <div className='main-wrapper dashboard-wrapper'>
+    <Layout title="Dashboard" currentPage={0}>
+      <div className="main-wrapper dashboard-wrapper">
         {
           // top action
         }
-        <div className='d-flex justify-content-between mb-29'>
-          <RangePicker
-            className='primary-range-picker'
-            separator={<img width={70} src={Separator} alt='' />}
-            suffixIcon={<img src={DateIcon} alt='' />}
-            clearIcon={false}
-          />
-          <div className='d-flex align-items-center'>
-            <Button className='default-button btn-print mr-16'>
-              <img src={Print} alt='' /> Print
-            </Button>
+        <div className="d-flex mb-29">
+          <div style={{ width: "20%" }}>
+            <p className="t1">Duration</p>
 
-            <Dropdown overlay={menu} trigger={["click"]}>
-              <Button className='default-button btn-print'>
-                <span className='color-primary'>Export</span>
-                <img className='ml-10' src={ArrowDown} alt='' />
-              </Button>
-            </Dropdown>
-          </div>
-        </div>
-        {
-          // cards
-        }
-
-        <div className='row'>
-          <div className='col-3'>
-            <div className='stats-card'>
-              <h1>Revenue Overview</h1>
-              <div className='f-24 fw-700 mb-30 text-center'>
-                <img className='icon-graph' src={ArrowGraphIcon} alt='' /> $
-                4,500.00
-              </div>
-              <p>
-                <span className='color-success'>10 % </span> Increase from
-                previous month
-              </p>
-            </div>
-          </div>
-          <div className='col-3'>
-            <div className='stats-card'>
-              <h1>New Customers</h1>
-              <div className='f-24 fw-700 mb-30 text-center'>
-                <img className='icon-graph' src={ArrowGraphIcon} alt='' /> 40 %
-              </div>
-              <p>
-                <span className='color-success'>10 % </span> Increase from
-                previous month
-              </p>
-            </div>
-          </div>
-          <div className='col-3'>
-            <div className='stats-card'>
-              <h1>Conversion Rate</h1>
-              <div className='f-24 fw-700 mb-30 text-center'>
-                <img className='icon-graph' src={ArrowGraphIcon} alt='' />
-                20 %
-              </div>
-              <p>
-                <span className='color-success'>10 % </span> Increase from
-                previous month
-              </p>
-            </div>
-          </div>
-          {
-            //speed-o meter
-          }
-          <div className='col-3'>
-            <SpeedoMeter />
-          </div>
-        </div>
-        {
-          // monthly sales line chart
-        }
-        <div className='line-chart-wrapper'>
-          <LineSalesChart />
-        </div>
-        {
-          // heat-map - rates
-        }
-        <div className='row mt-22'>
-          <div className='col-3'>
-            <div className='heat-map-wrapper'>
-              <ERPHeatMap />
-            </div>
-          </div>
-          <div className='col-3'>
-            <div className='heat-map-wrapper'>
-              <TicketHeatMap />
-            </div>
+            <Select className="s1">
+              <Option>1</Option>
+              <Option>1</Option>
+              <Option>1</Option>
+            </Select>
           </div>
 
-          <div className='col-6'>
-            <div className='row '>
-              {
-                // churn rate
-              }
-              <div className='col-6'>
-                <div className='rate-wrapper'>
-                  <div className='rate-wrapper__header'>Churn Rate</div>
-                  <h1>90 %</h1>
-                  <p>
-                    <span className='color-success'>
-                      <img className='icon-graph' src={ArrowGraphIcon} alt='' />
-                      10 %
-                    </span>
-                    Increase from previous month
+          <div style={{ width: "20%" }}>
+            <RangePicker
+              className="primary-range-picker"
+              separator={<img width={70} src={Separator} alt="" />}
+              suffixIcon={<img src={DateIcon} alt="" />}
+              clearIcon={false}
+            />
+          </div>
+
+          <div style={{ width: "60%" }}></div>
+        </div>
+
+        <div className="row gx-2">
+          <div className="col-4 ">
+            <div className="card-sm">
+              <div className="d-flex justify-content-evenly">
+                <p className="t2 mt1"> Tickets</p>
+
+                <PieMap />
+              </div>
+            </div>
+          </div>
+          <div className="col-4">
+            <div className="card-sm">
+              <p className="t2"> Priority</p>
+              <div className="priority-wrap">
+                <div className="d-flex justify-content-between">
+                  <div style={{ textAlign: "center" }}>
+                    <p className="t1">High</p>
+                    <p className="t-danger">10</p>
+
+                    <div className="d1">
+                      <img src={RedFlag} alt="" />
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <p className="t1">Medium</p>
+                    <p className="t-danger" style={{ color: "#29C452" }}>
+                      10
+                    </p>
+
+                    <div className="d1">
+                      <img src={GreenFlag} alt="" />
+                    </div>
+                  </div>{" "}
+                  <div style={{ textAlign: "center" }}>
+                    <p className="t1">Low</p>
+                    <p className="t-danger" style={{ color: "#119ABE" }}>
+                      10
+                    </p>
+
+                    <div className="d1">
+                      <img src={BlueFlag} alt="" />
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <p className="t1">Un assigned</p>
+                    <p className="t-danger" style={{ color: "#119ABE" }}>
+                      10
+                    </p>
+
+                    <div className="d1">
+                      <img src={BlueFlag} alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-4">
+            <div className="card-sm">
+              <p className="t2">customer satisfaction</p>
+
+              <div className="d-flex justify-content-between">
+                <div style={{ marginTop: "27px" }}>
+                  <div className="d-flex">
+                    <p className="t1" style={{ marginRight: "56px" }}>
+                      Poor
+                    </p>
+                    <p className="t2">20</p>
+                  </div>
+                  <div className="d-flex">
+                    <p className="t1" style={{ marginRight: "51px" }}>
+                      Good
+                    </p>
+                    <p className="t2">10</p>
+                  </div>
+                  <div className="d-flex">
+                    <p className="t1" style={{ marginRight: "30px" }}>
+                      Excelllent
+                    </p>
+                    <p className="t2">20</p>
+                  </div>
+                </div>
+
+                <div>
+                  <Progress
+                    width="112px"
+                    type="circle"
+                    strokeColor={"#29C452"}
+                    percent={86}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row g-2" style={{ marginTop: "20px" }}>
+          <div className="col-4">
+            <div className="card-sm2">
+              <Tabs defaultActiveKey="1">
+                <TabPane tab="Status" key="1">
+                  <div className="d-flex">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">New</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress size="small" status="active" percent={30} />
+                    </div>
+                  </div>
+
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">In progress</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#119ABE"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Resolved</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#29C452"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Waiting for customers</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#AFAFAF "
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Closed</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#1D93F6"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Reopen</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#FB3D3D"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                </TabPane>
+                <TabPane tab="Sources" key="2">
+                  <div className="d-flex">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Email</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress size="small" status="active" percent={30} />
+                    </div>
+                  </div>
+
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Phone</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#119ABE"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">WhatsApp</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#29C452"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Message</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#AFAFAF "
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">Website</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#1D93F6"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                  <div className="d-flex pd1">
+                    <div style={{ width: "50%", textAlign: "left" }}>
+                      <p className="t1">ERP Software</p>
+                    </div>
+                    <div style={{ width: "50%" }}>
+                      <Progress
+                        strokeColor="#FB3D3D"
+                        size="small"
+                        status="active"
+                        percent={30}
+                      />
+                    </div>
+                  </div>
+                </TabPane>
+              </Tabs>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="card-sm2">
+              <p className="t2">SLA</p>
+
+              <div className="time-wrap">
+                <div className="d-flex">
+                  <p className="t3">2D</p>
+                  <img
+                    style={{ marginLeft: "15px", marginRight: "15px" }}
+                    src={GreenTickIcon}
+                    alt=""
+                  />
+                  <p className="t4">
+                    Time to resolution within 2day{" "}
+                    <img height="21px" src={DateIcon} alt="" />
                   </p>
                 </div>
               </div>
-              <div className='col-6'>
-                <div className='rate-wrapper'>
-                  <div className='rate-wrapper__header'>Customers Feedback</div>
-                  <h1>90 %</h1>
-                  <p>
-                    <span className='color-success'>
-                      <img className='icon-graph' src={ArrowGraphIcon} alt='' />
-                      10 %
-                    </span>
-                    Increase from previous month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className='row'>
-              <div className='col-12'>
-                <div className='customer-overview'>
-                  <CustomerOverview />
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-        {
-          // cities
-        }
-        <div className='cities-wrapper'>
-          <PurchasingProduct />
+          <div className="col-5">
+            <div className="card-sm2"></div>
+          </div>
         </div>
       </div>
     </Layout>
