@@ -2508,25 +2508,27 @@ input {
 }
 .report-page-wrapper .filter-wrapper {
   width: 100%;
-  // height: 256px;
   background: #ffffff 0% 0% no-repeat padding-box !important;
-  border: 10px solid #f2f2f2 !important;
   border-radius: 8px !important;
   height: 0px;
   transition: all 300ms ease-in;
-  // padding: 30px 29px 20px 36px !important;
   overflow: hidden;
 }
 .report-page-wrapper .filter-wrapper2 {
   width: 100%;
-  // height: 256px;
   background: #ffffff 0% 0% no-repeat padding-box !important;
 
   border-radius: 8px !important;
   height: 0px;
   transition: all 300ms ease-in;
-  // padding: 30px 29px 20px 36px !important;
   overflow: hidden;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .animate-filter-wrapper {
   box-shadow: 0px 10px 20px #5b5b5b26 !important;
@@ -2546,6 +2548,10 @@ input {
   height: 184px !important;
 }
 
+.report-page-wrapper .padding-wrap {
+  padding: 30px;
+}
+
 .report-page-wrapper .t1 {
   font-size: 12px;
   font-weight: 500;
@@ -2559,7 +2565,6 @@ input {
 }
 
 .report-page-wrapper .status-select {
-  width: 216px !important;
   border-radius: 4px;
   opacity: 1;
 }
@@ -2646,6 +2651,18 @@ input {
   font-size: 12px;
   font-weight: 700;
 }
+.report-page-wrapper .data-table2 th {
+  background: #d6edff;
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+
+  border-left: none !important;
+  border-right: none !important;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+}
 
 .report-page-wrapper
   .ant-table-thead
@@ -2674,6 +2691,9 @@ input {
 .report-page-wrapper .data-table {
   margin-top: 13px;
 }
+.report-page-wrapper .data-table2 {
+  margin-top: 13px;
+}
 .report-page-wrapper .setting-btn {
   width: 40px;
   height: 38px;
@@ -2681,6 +2701,10 @@ input {
   margin-left: 20px;
 }
 
+.report-page-wrapper .data-table2 {
+  margin-top: 13px;
+  width: 83vw !important;
+}
 .setting-modal .ant-modal-content {
   width: 723px;
   height: 599px;
@@ -3434,12 +3458,32 @@ tr {
 
   padding-bottom: 10px;
 }
+.ticket-settings
+  .create-role-modal
+  .settings-wrap
+  .ant-collapse
+  > .ant-collapse-item:last-child,
+.ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+  border-radius: 0 0 0px 2px !important;
+  background: #186bb1 !important ;
+  border: none !important;
+  font-size: 12px !important;
+  font-weight: 12px !important;
+  color: #000000;
+}
 
 // ===============================================
 ///////////////////Dashboard ////////////////////
 // ===============================================
 
 .dashboard-wrapper .t1 {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5e5e5e;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.dashboard-wrapper .t0 {
   font-size: 12px;
   font-weight: 500;
   color: #5e5e5e;
@@ -3551,7 +3595,7 @@ tr {
   word-break: normal;
 }
 .dashboard-wrapper .time-wrap {
-  margin-top: 38px;
+  margin-top: 42px;
 }
 
 .dashboard-wrapper .t3 {
@@ -3568,4 +3612,56 @@ tr {
   font-weight: 400 !important;
   color: #000000;
   margin-bottom: 0px;
+}
+
+.dashboard-wrapper .t5 {
+  font-size: 12px;
+  font-weight: 400;
+  color: #1767aa;
+}
+
+.dashboard-wrapper .table-wrap {
+  margin-top: 27px;
+}
+
+.dashboard-wrapper .t6 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+}
+
+.dashboard-wrapper .t7 {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+  color: #000000;
+}
+
+.dashboard-wrapper th,
+thead {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+  background: D6EDFF;
+  background: #ffffff !important;
+  text-align: left;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  text-align: center !important;
+}
+
+.dashboard-wrapper tr {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+  color: #000000;
+}
+
+.dashboard-wrapper .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s;
 }

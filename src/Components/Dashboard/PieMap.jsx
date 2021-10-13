@@ -14,6 +14,14 @@ const PieMap = () => {
   return (
     <>
       <PieChart width={270} height={150}>
+        <text
+          width={200}
+          height={200}
+          textAnchor="middle"
+          dominantBaseline="minddle"
+        >
+          asd
+        </text>
         <Pie
           data={data}
           cx={160}

@@ -4,7 +4,7 @@ import { ReactComponent as PaymentsIcon } from "Assets/icons/payments.svg";
 import { ReactComponent as TenantsIcon } from "Assets/icons/tenants.svg";
 import { ReactComponent as RequestsIcon } from "Assets/icons/requests.svg";
 import { ReactComponent as ManagementIcon } from "Assets/icons/management.svg";
-import { ReactComponent as SettingsIcon } from "Assets/icons/setting.svg";
+import { ReactComponent as SettingsIcon } from "Assets/icons/Icon material-settings (2).svg";
 
 // import SettingIcon from "../Assets/icons/Icon material-settings (1).svg";
 import ProfileIcon from "Assets/icons/profile.svg";
@@ -28,16 +28,20 @@ const menu = (
 const Index = ({ children, title, currentPage }) => {
   // static nav links data
   const navLinks = [
-    { title: "Dashboard", url: "/dashboard", icon: <DashboardIcon /> },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: <DashboardIcon />,
+    },
     { title: "Tickets", url: "/tickets", icon: <PaymentsIcon /> },
     { title: "Reports", url: "/Reports", icon: <TenantsIcon /> },
     {
       title: "Settings",
       url: "/settings",
-      icon: <SettingsIcon />,
+      icon: <SettingsIcon style={{ marginRight: "14px" }} />,
       children: [
-        { title: "User Managemnet", url: "/settings", icon: <SettingsIcon /> },
-        { title: "Tickets", url: "/settings/tickets", icon: <SettingsIcon /> },
+        { title: "User Managemnet", url: "/settings" },
+        { title: "Tickets", url: "/settings/tickets" },
       ],
     },
   ];
@@ -69,7 +73,12 @@ const Index = ({ children, title, currentPage }) => {
                     </Link>
                   </li>
                 ) : (
-                  <Collapse expandIcon={false} bordered={false}>
+                  <Collapse
+                    expandIcon={false}
+                    collapsible="header"
+                    destroyInactivePanel={true}
+                    bordered={false}
+                  >
                     <Panel
                       key="1"
                       header={
@@ -84,7 +93,7 @@ const Index = ({ children, title, currentPage }) => {
                             marginBottom: "10px !important",
                           }}
                         >
-                          {link.title}
+                          {link.icon} {link.title}
                         </span>
                       }
                     >
@@ -96,11 +105,14 @@ const Index = ({ children, title, currentPage }) => {
                               key="1"
                               style={{
                                 fontSize: "14px",
+                                fontWeight: "400",
                                 color: "#FFFFFF",
                                 marginTop: "11px",
                               }}
                             >
-                              <Link to={child.url}>{child.title}</Link>
+                              <div className="inside-active">
+                                <Link to={child.url}>{child.title} </Link>
+                              </div>
                             </div>
                           );
                         })}

@@ -8,6 +8,8 @@ import {
   Select,
   Progress,
   Tabs,
+  Table,
+  Checkbox,
 } from "antd";
 import DateIcon from "../../Assets/icons/XMLID_12_.svg";
 import Separator from "Assets/icons/seperator.svg";
@@ -27,11 +29,16 @@ import GreenFlag from "../../Assets/icons/Group 3071.svg";
 import BlueFlag from "../../Assets/icons/Group 3070.svg";
 import GreenTickIcon from "../../Assets/icons/Icon awesome-check.svg";
 
+import CrossIcon from "../../Assets/icons/Icon metro-cross.svg";
+import HorixontalIcon from "../../Assets/icons/ellipsis-horizontal-sharp.svg";
+
 import { useState } from "react";
 
 const { RangePicker } = DatePicker;
 
 const Index = () => {
+  const [isUSer, setIsUSer] = useState(false);
+
   const { TabPane } = Tabs;
   const menu = (
     <Menu>
@@ -41,6 +48,197 @@ const Index = () => {
     </Menu>
   );
   const { Option } = Select;
+
+  const dataSource = [
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+    },
+  ];
+
+  const columns = [
+    {
+      title: "Ticket Id",
+      dataIndex: "TicketId",
+      key: "TicketId",
+    },
+    {
+      title: "Ticket title",
+      dataIndex: "TicketTitle",
+      key: "TicketTitle",
+    },
+    {
+      title: "Status",
+      // dataIndex: "Status",
+      key: "Status",
+      render: (row) => (
+        <span style={{ color: "#1767AA", fontWeight: "700" }}>
+          {row.Status}
+        </span>
+      ),
+    },
+    {
+      title: "Created Date",
+      dataIndex: "CreatedDate",
+      key: "CreatedDate",
+    },
+  ];
+
+  const columns2 = [
+    {
+      title: "Ticket Id",
+      dataIndex: "TicketId",
+      key: "TicketId",
+    },
+    {
+      title: "Ticket title",
+      dataIndex: "TicketTitle",
+      key: "TicketTitle",
+    },
+    {
+      title: "Status",
+      // dataIndex: "Status",
+      key: "Status",
+      render: (row) => (
+        <span style={{ color: "#1767AA", fontWeight: "700" }}>
+          {row.Status}
+        </span>
+      ),
+    },
+    {
+      title: "Created Date",
+      dataIndex: "CreatedDate",
+      key: "CreatedDate",
+    },
+
+    {
+      title: "Action",
+      // dataIndex: "Action",
+      key: "Action",
+      render: (row) => <span style={{ color: "#1767AA" }}> {row.Action}</span>,
+    },
+  ];
+  const dataSource2 = [
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+      Action: "View",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+      Action: "View",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+      Action: "Action",
+    },
+    {
+      key: "1",
+      TicketId: "#123",
+      TicketTitle: "Demo",
+      Status: "Pending",
+      CreatedDate: "10-10-2020",
+      Action: "View",
+    },
+  ];
+
+  const columnsUsers = [
+    {
+      title: "Users",
+      dataIndex: "Users",
+      key: "Users",
+    },
+    {
+      title: "Total tickets",
+      dataIndex: "TotalTickets",
+      key: "TotalTickets",
+    },
+    {
+      title: "Resolved",
+      dataIndex: "Resolved",
+      key: "Resolved",
+    },
+    {
+      title: "Rate",
+      dataIndex: "Rate",
+      key: "Rate",
+    },
+  ];
+  const dataSourceUsers = [
+    {
+      key: "1",
+      Users: "John",
+      TotalTickets: 12,
+      Resolved: "9",
+      Rate: "90%",
+    },
+  ];
+  const columnsTeams = [
+    {
+      title: "Teams",
+      dataIndex: "Teams",
+      key: "Teams",
+    },
+    {
+      title: "Total tickets",
+      dataIndex: "TotalTickets",
+      key: "TotalTickets",
+    },
+    {
+      title: "Resolved",
+      dataIndex: "Resolved",
+      key: "Resolved",
+    },
+    {
+      title: "Rate",
+      dataIndex: "Rate",
+      key: "Rate",
+    },
+  ];
+  const dataSourceTeams = [
+    {
+      key: "1",
+      Teams: "Team 1",
+      TotalTickets: 12,
+      Resolved: "9",
+      Rate: "90%",
+    },
+  ];
   return (
     <Layout title="Dashboard" currentPage={0}>
       <div className="main-wrapper dashboard-wrapper">
@@ -49,7 +247,7 @@ const Index = () => {
         }
         <div className="d-flex mb-29">
           <div style={{ width: "20%" }}>
-            <p className="t1">Duration</p>
+            <p className="t0">Duration</p>
 
             <Select className="s1">
               <Option>1</Option>
@@ -59,21 +257,47 @@ const Index = () => {
           </div>
 
           <div style={{ width: "20%" }}>
+            <p className="t0">Date (from-To)</p>
+
             <RangePicker
+              style={{ marginTop: "0px" }}
               className="primary-range-picker"
               separator={<img width={70} src={Separator} alt="" />}
               suffixIcon={<img src={DateIcon} alt="" />}
               clearIcon={false}
             />
           </div>
+          <div style={{ width: "20%", marginLeft: "120px" }}>
+            {!isUSer && (
+              <>
+                <p className="t0">Users</p>
 
-          <div style={{ width: "60%" }}></div>
+                <Select className="s1">
+                  <Option value="lucy">
+                    <Checkbox>User 1</Checkbox>
+                  </Option>
+                  <Option value="lucy">
+                    <Checkbox>In Progress</Checkbox>
+                  </Option>{" "}
+                  <Option value="lucy">
+                    <Checkbox>Support Team Resolved</Checkbox>
+                  </Option>{" "}
+                  <Option value="lucy">
+                    <Checkbox>TEchnical team Resolved</Checkbox>
+                  </Option>{" "}
+                  <Option value="lucy">
+                    <Checkbox>Rsolved</Checkbox>
+                  </Option>
+                </Select>
+              </>
+            )}
+          </div>
         </div>
 
         <div className="row gx-2">
           <div className="col-4 ">
             <div className="card-sm">
-              <div className="d-flex justify-content-evenly">
+              <div className="d-flex justify-content-around">
                 <p className="t2 mt1"> Tickets</p>
 
                 <PieMap />
@@ -131,7 +355,7 @@ const Index = () => {
             <div className="card-sm">
               <p className="t2">customer satisfaction</p>
 
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-around">
                 <div style={{ marginTop: "27px" }}>
                   <div className="d-flex">
                     <p className="t1" style={{ marginRight: "56px" }}>
@@ -153,7 +377,7 @@ const Index = () => {
                   </div>
                 </div>
 
-                <div>
+                <div style={{}}>
                   <Progress
                     width="112px"
                     type="circle"
@@ -339,16 +563,91 @@ const Index = () => {
                   />
                   <p className="t4">
                     Time to resolution within 2day{" "}
-                    <img height="21px" src={DateIcon} alt="" />
+                    <img
+                      height="21px"
+                      style={{ marginLeft: "13px" }}
+                      src={DateIcon}
+                      alt=""
+                    />
+                  </p>
+                </div>
+                <div className="d-flex" style={{ marginTop: "48px" }}>
+                  <p className="t3">2D</p>
+                  <img
+                    style={{ marginLeft: "15px", marginRight: "15px" }}
+                    src={CrossIcon}
+                    alt=""
+                  />
+                  <p className="t4">
+                    Time to resolution within 2day{" "}
+                    <img
+                      height="21px"
+                      style={{ marginLeft: "13px" }}
+                      src={DateIcon}
+                      alt=""
+                    />
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-5">
-            <div className="card-sm2"></div>
+            <div className="card-sm2">
+              {isUSer ? (
+                <div>
+                  <div className="d-flex justify-content-between">
+                    <p className="t2">Open Tickets</p>
+                    <p className="t5">view all </p>
+                  </div>
+
+                  <Table
+                    dataSource={dataSource}
+                    bordered={false}
+                    pagination={false}
+                    columns={columns}
+                  />
+                </div>
+              ) : (
+                <Tabs defaultActiveKey="1">
+                  <TabPane tab="Top 5 Users" key="1">
+                    <Table
+                      dataSource={dataSourceUsers}
+                      bordered={false}
+                      pagination={false}
+                      columns={columnsUsers}
+                    />
+                  </TabPane>
+                  <TabPane tab="Top 5 Teams" key="2">
+                    <Table
+                      dataSource={dataSourceTeams}
+                      bordered={false}
+                      pagination={false}
+                      columns={columnsTeams}
+                    />
+                  </TabPane>
+                </Tabs>
+              )}
+            </div>
           </div>
         </div>
+        {!isUSer && (
+          <div className="row g-2" style={{ marginTop: "15px" }}>
+            <div className="col-12">
+              <div className="card-sm2">
+                <p className="t2">Open Tickets</p>
+
+                <div>
+                  <Table
+                    dataSource={dataSource2}
+                    bordered={false}
+                    pagination={false}
+                    columns={columns2}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </Layout>
   );

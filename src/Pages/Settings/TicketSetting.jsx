@@ -22,7 +22,7 @@ function TicketSetting(props) {
   const { TabPane } = Tabs;
   return (
     <div>
-      <Layout title="Ticket Settings">
+      <Layout title="Ticket Settings" currentPage={3}>
         <div className="main-wrapper">
           <div className="ticket-settings">
             <Tabs defaultActiveKey="1">

@@ -348,7 +348,7 @@ function Report(props) {
   const { TabPane } = Tabs;
   return (
     <>
-      <Layout title="Reports" currentPage="1">
+      <Layout title="Reports" currentPage={2}>
         <div className="main-wrapper">
           <div className="report-page-wrapper">
             <div>
@@ -390,8 +390,8 @@ function Report(props) {
                     >
                       <div className="filter-padding">
                         <Form>
-                          <div className="d-flex justify-content-between">
-                            <div>
+                          <div className="d-flex">
+                            <div style={{ width: "25%" }}>
                               <p className="t1">Duration</p>
 
                               <Form.Item>
@@ -403,7 +403,7 @@ function Report(props) {
                                 </Select>
                               </Form.Item>
                             </div>
-                            <div>
+                            <div style={{ width: "35%" }}>
                               <p className="t1">Date (From-To)</p>
 
                               <Form.Item>
@@ -416,7 +416,7 @@ function Report(props) {
                               </Form.Item>
                             </div>
 
-                            <div>
+                            <div style={{ width: "20%" }}>
                               <p className="t1">Users</p>
 
                               <Form.Item>
@@ -443,7 +443,7 @@ function Report(props) {
                                 </Select>
                               </Form.Item>
                             </div>
-                            <div>
+                            <div style={{ width: "25%" }}>
                               <p className="t1">Priority</p>
 
                               <Form.Item>
@@ -552,217 +552,227 @@ function Report(props) {
                           : "filter-wrapper"
                       }
                     >
-                      <Form>
-                        <div className="d-flex justify-content-between">
-                          <div>
-                            <p className="t1">Date</p>
+                      <div className="padding-wrap">
+                        <Form>
+                          <div className="d-flex">
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Date</p>
 
-                            <Form.Item>
-                              <Select defaultValue="" style={{ width: 120 }}>
-                                <Option value="jack">Created Date</Option>
-                                <Option value="lucy">Due date</Option>
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  style={{ width: "170px" }}
+                                >
+                                  <Option value="jack">Created Date</Option>
+                                  <Option value="lucy">Due date</Option>
 
-                                <Option value="Yiminghe">Updated date</Option>
-                              </Select>
-                            </Form.Item>
+                                  <Option value="Yiminghe">Updated date</Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Duration</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  style={{ width: "170px" }}
+                                >
+                                  <Option value="jack"></Option>
+                                  <Option value="lucy">Yesterday</Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Status</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  className="status-select"
+                                  style={{ width: 170 }}
+                                >
+                                  <Option value="lucy">
+                                    <Checkbox>New</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>In Progress</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Support Team</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>TEchnical team</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Rsolved</Checkbox>
+                                  </Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Assigned by</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  className="assigned-by"
+                                  style={{ width: "170px" }}
+                                >
+                                  <Option value="lucy">
+                                    <Checkbox>DEmo 1</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 2</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 3</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 4</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 5</Checkbox>
+                                  </Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Priority</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  className="assigned-by"
+                                  style={{ width: "170px" }}
+                                >
+                                  <Option value="lucy">
+                                    <img
+                                      src={Flag4}
+                                      style={{ marginRight: "14px" }}
+                                      alt=""
+                                    />
+                                    un organized
+                                  </Option>
+                                  <Option value="lucy">
+                                    <img
+                                      src={Flag5}
+                                      style={{ marginRight: "14px" }}
+                                      alt=""
+                                    />
+                                    High
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <img
+                                      src={Flag6}
+                                      style={{ marginRight: "14px" }}
+                                      alt=""
+                                    />
+                                    Medium
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <img
+                                      src={Flag7}
+                                      style={{ marginRight: "14px" }}
+                                      alt=""
+                                    />
+                                    Low
+                                  </Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
                           </div>
-                          <div>
-                            <p className="t1">Duration</p>
+                          <div className="d-flex ">
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Ticket Type</p>
 
-                            <Form.Item>
-                              <Select defaultValue="" style={{ width: 120 }}>
-                                <Option value="jack"></Option>
-                                <Option value="lucy">Yesterday</Option>
-                              </Select>
-                            </Form.Item>
+                              <Form.Item>
+                                <Select defaultValue="" style={{ width: 170 }}>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo1</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 2</Checkbox>
+                                  </Option>{" "}
+                                </Select>
+                              </Form.Item>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Source</p>
+
+                              <Form.Item>
+                                <Select defaultValue="" style={{ width: 170 }}>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo1</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 2</Checkbox>
+                                  </Option>{" "}
+                                </Select>
+                              </Form.Item>
+                            </div>
+
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Team</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  style={{
+                                    width: 170,
+                                    height: "38px",
+                                  }}
+                                >
+                                  <Option value="lucy">
+                                    <Checkbox>Team 1</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>Team 2</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Team 3</Checkbox>
+                                  </Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <p className="t1">Assigned by</p>
+
+                              <Form.Item>
+                                <Select
+                                  defaultValue=""
+                                  className="assigned-by"
+                                  style={{ width: 120 }}
+                                >
+                                  <Option value="lucy">
+                                    <Checkbox>DEmo 1</Checkbox>
+                                  </Option>
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 2</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 3</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 4</Checkbox>
+                                  </Option>{" "}
+                                  <Option value="lucy">
+                                    <Checkbox>Demo 5</Checkbox>
+                                  </Option>
+                                </Select>
+                              </Form.Item>
+                            </div>
+
+                            <div style={{ width: "20%" }}></div>
                           </div>
+                        </Form>
 
-                          <div>
-                            <p className="t1">Status</p>
-
-                            <Form.Item>
-                              <Select
-                                defaultValue=""
-                                className="status-select"
-                                style={{ width: 120, height: "38px" }}
-                              >
-                                <Option value="lucy">
-                                  <Checkbox>New</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>In Progress</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Support Team Resolved</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>TEchnical team Resolved</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Rsolved</Checkbox>
-                                </Option>
-                              </Select>
-                            </Form.Item>
-                          </div>
-                          <div>
-                            <p className="t1">Assigned by</p>
-
-                            <Form.Item>
-                              <Select
-                                defaultValue=""
-                                className="assigned-by"
-                                style={{ width: 120 }}
-                              >
-                                <Option value="lucy">
-                                  <Checkbox>DEmo 1</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>Demo 2</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 3</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 4</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 5</Checkbox>
-                                </Option>
-                              </Select>
-                            </Form.Item>
-                          </div>
-
-                          <div>
-                            <p className="t1">Priority</p>
-
-                            <Form.Item>
-                              <Select
-                                defaultValue=""
-                                className="assigned-by"
-                                style={{ width: 120 }}
-                              >
-                                <Option value="lucy">
-                                  <img
-                                    src={Flag4}
-                                    style={{ marginRight: "14px" }}
-                                    alt=""
-                                  />
-                                  un organized
-                                </Option>
-                                <Option value="lucy">
-                                  <img
-                                    src={Flag5}
-                                    style={{ marginRight: "14px" }}
-                                    alt=""
-                                  />
-                                  High
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <img
-                                    src={Flag6}
-                                    style={{ marginRight: "14px" }}
-                                    alt=""
-                                  />
-                                  Medium
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <img
-                                    src={Flag7}
-                                    style={{ marginRight: "14px" }}
-                                    alt=""
-                                  />
-                                  Low
-                                </Option>
-                              </Select>
-                            </Form.Item>
-                          </div>
+                        <div className="btns-wrap">
+                          <Button className="btn-clear">Clear</Button>
+                          <Button className="btn-apply">Apply</Button>
                         </div>
-                        <div className="d-flex">
-                          <div>
-                            <p className="t1">Ticket Type</p>
-
-                            <Form.Item>
-                              <Select defaultValue="" style={{ width: 170 }}>
-                                <Option value="lucy">
-                                  <Checkbox>Demo1</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>Demo 2</Checkbox>
-                                </Option>{" "}
-                              </Select>
-                            </Form.Item>
-                          </div>
-                          <div style={{ marginLeft: "30px" }}>
-                            <p className="t1">Source</p>
-
-                            <Form.Item>
-                              <Select defaultValue="" style={{ width: 170 }}>
-                                <Option value="lucy">
-                                  <Checkbox>Demo1</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>Demo 2</Checkbox>
-                                </Option>{" "}
-                              </Select>
-                            </Form.Item>
-                          </div>
-
-                          <div style={{ marginLeft: "30px" }}>
-                            <p className="t1">Team</p>
-
-                            <Form.Item>
-                              <Select
-                                defaultValue=""
-                                style={{
-                                  width: 170,
-                                  height: "38px",
-                                }}
-                              >
-                                <Option value="lucy">
-                                  <Checkbox>Team 1</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>Team 2</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Team 3</Checkbox>
-                                </Option>
-                              </Select>
-                            </Form.Item>
-                          </div>
-                          <div style={{ marginLeft: "30px" }}>
-                            <p className="t1">Assigned by</p>
-
-                            <Form.Item>
-                              <Select
-                                defaultValue=""
-                                className="assigned-by"
-                                style={{ width: 120 }}
-                              >
-                                <Option value="lucy">
-                                  <Checkbox>DEmo 1</Checkbox>
-                                </Option>
-                                <Option value="lucy">
-                                  <Checkbox>Demo 2</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 3</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 4</Checkbox>
-                                </Option>{" "}
-                                <Option value="lucy">
-                                  <Checkbox>Demo 5</Checkbox>
-                                </Option>
-                              </Select>
-                            </Form.Item>
-                          </div>
-                        </div>
-                      </Form>
-
-                      <div className="btns-wrap">
-                        <Button className="btn-clear">Clear</Button>
-                        <Button className="btn-apply">Apply</Button>
                       </div>
                     </div>
                   )}
@@ -788,11 +798,11 @@ function Report(props) {
                     </div>
                   </div>
 
-                  <div className="data-table">
+                  <div className="data-table2">
                     <Table
                       dataSource={dataSource2}
                       columns={columns2}
-                      scroll={{ x: "100vw" }}
+                      scroll={{ x: "85vw" }}
                       pagination={false}
                     />
                   </div>

@@ -333,7 +333,7 @@ function UserManagement(props) {
 
   return (
     <div>
-      <Layout title="User management" currentPage="4">
+      <Layout title="User management" currentPage={3}>
         <div className="main-wrapper">
           <div className="settings-wrap">
             <div>
