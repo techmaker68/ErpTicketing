@@ -6,11 +6,14 @@ import { ReactComponent as RequestsIcon } from "Assets/icons/requests.svg";
 import { ReactComponent as ManagementIcon } from "Assets/icons/management.svg";
 import { ReactComponent as SettingsIcon } from "Assets/icons/Icon material-settings (2).svg";
 
+import BellIcon from "../Assets/icons/Path 482.svg";
+
 // import SettingIcon from "../Assets/icons/Icon material-settings (1).svg";
 import ProfileIcon from "Assets/icons/profile.svg";
 import DownIcon from "Assets/icons/downIcon.svg";
 import { Menu, Dropdown, Collapse } from "antd";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const { Panel } = Collapse;
 
@@ -26,6 +29,7 @@ const menu = (
 
 // Use as parent wrapper. Render Sidebar, Top nav and Content of the page
 const Index = ({ children, title, currentPage }) => {
+  const [notificationBox, setNotificationBox] = useState(false);
   // static nav links data
   const navLinks = [
     {
@@ -131,20 +135,66 @@ const Index = ({ children, title, currentPage }) => {
         }
         <nav className="top-nav">
           <div className="f-16 fw-600">{title}</div>
-          <Dropdown
-            placement="bottomLeft"
-            className="cursor-pointer"
-            overlay={menu}
-            trigger={["click"]}
-          >
-            <div className="dropdown-trigger">
-              <img src={ProfileIcon} alt="" />
-              <span className="fw-500 f-12 color-primary username">
-                Muzamil Afridi
-              </span>
-              <img className="down-icon" src={DownIcon} alt="" />
+
+          <div className="d-flex">
+            <div className="position-relative">
+              <img
+                style={{
+                  marginRight: "42px",
+                  marginTop: "2px",
+                  cursor: "pointer",
+                }}
+                src={BellIcon}
+                alt=""
+                onClick={() => setNotificationBox(!notificationBox)}
+              />
+              <div className="notification-dot">
+                <p style={{ fontSize: "6px", color: "white" }}>6</p>
+              </div>
+
+              {notificationBox && (
+                <div className="notification-box">
+                  <div className="notification-header d-flex justify-content-between">
+                    <p className="tx-1">Notifications</p>
+                    <p className="tx-1">
+                      {" "}
+                      <b> 10 </b>
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
-          </Dropdown>
+            <div className=" d-flex position-relative">
+              <p
+                style={{
+                  marginRight: "30px",
+                  fontSize: "12px",
+                  color: "#535658",
+                  fontWeight: "400",
+                  marginBottom: "0px",
+                  marginTop: "5px",
+                }}
+              >
+                Online users: <b> 158 </b>
+              </p>
+
+              <div className="onnline-dot"></div>
+              <Dropdown
+                placement="bottomLeft"
+                className="cursor-pointer"
+                overlay={menu}
+                trigger={["click"]}
+              >
+                <div className="dropdown-trigger">
+                  <img src={ProfileIcon} alt="" />
+                  <span className="fw-500 f-12 color-primary username">
+                    Muzamil Afridi
+                  </span>
+                  <img className="down-icon" src={DownIcon} alt="" />
+                </div>
+              </Dropdown>
+            </div>
+          </div>
         </nav>
         {
           // main content
