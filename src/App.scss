@@ -2875,6 +2875,13 @@ thead {
   text-align: center !important;
 }
 
+.settings-wrap .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f0f0f0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
 .setting-wrap td,
 tr {
   text-align: center !important;
@@ -3102,7 +3109,8 @@ tr {
 
 .create-user-model .ant-modal-content {
   width: 738px;
-  height: 376px;
+  min-height: 480px;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
   border-radius: 8px;
@@ -3224,6 +3232,8 @@ tr {
 }
 
 .create-role-modal .checks-wrap {
+  white-space: nowrap;
+  overflow-x: scroll;
   width: 203px;
   height: 339px;
   background: #ffffff 0% 0% no-repeat padding-box;

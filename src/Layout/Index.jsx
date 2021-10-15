@@ -41,7 +41,7 @@ const Index = ({ children, title, currentPage }) => {
     { title: "Reports", url: "/Reports", icon: <TenantsIcon /> },
     {
       title: "Settings",
-      url: "/settings",
+      url: "",
       icon: <SettingsIcon style={{ marginRight: "14px" }} />,
       children: [
         { title: "User Managemnet", url: "/settings" },

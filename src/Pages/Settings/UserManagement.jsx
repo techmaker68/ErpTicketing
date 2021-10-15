@@ -14,6 +14,7 @@ import {
   Space,
   Collapse,
   Tree,
+  message,
 } from "antd";
 import SearchIcon from "../../Assets/icons/Icon material-search (1).svg";
 
@@ -24,6 +25,11 @@ import ReactQuill from "react-quill";
 
 import AddIcon from "../../Assets/icons/Icon material-add.svg";
 import { right } from "@popperjs/core";
+import LeftIcon from "../../Assets/icons/Icon feather-chevrons-left (3).svg";
+import LeftIcon1 from "../../Assets/icons/Icon feather-chevrons-left (1).svg";
+
+import Api from "Api.js";
+import { useEffect } from "react";
 
 function UserManagement(props) {
   const { Panel } = Collapse;
@@ -36,22 +42,27 @@ function UserManagement(props) {
   const [teamModal, setTeamModal] = useState(false);
   const [userModal, setUserModal] = useState(false);
   const [roleModal, setRoleModal] = useState(false);
+  const [dataSource, setDataSource] = useState([]);
+  const [expandedKeys, setExpandedKeys] = useState(["", ""]);
+  const [checkedKeys, setCheckedKeys] = useState([""]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  const [autoExpandParent, setAutoExpandParent] = useState(true);
+  const [teams, setTeams] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const [role, setRole] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const { TabPane } = Tabs;
-  const dataSource = [
+  // const dataSource = [];
+  const dataSource2 = [
     {
       key: "1",
-      Fullname: "John Doe",
-      Username: 32,
-      Email: "10 Downing Street",
-      Role: 32,
-      CreatedDate: 32,
-      Gender: 32,
-      Team: 32,
+      Name: "John Doe",
+      TotalMembersCount: 32,
+      Description: "10 Downing Street",
       Action: 32,
     },
-  ];
-  const dataSource2 = [
     {
       key: "1",
       Name: "John Doe",
@@ -72,37 +83,38 @@ function UserManagement(props) {
 
   const columns2 = [
     {
-      title: "Name",
-      dataIndex: "Name",
-      key: "Name",
+      title: "id",
+      dataIndex: "teamId",
+      key: "teamId",
     },
     {
-      title: "Total Members Count",
-      dataIndex: "TotalMembersCount",
-      key: "TotalMembersCount",
+      title: "Name",
+      dataIndex: "teamName",
+      key: "teamName",
+    },
+    {
+      title: "status",
+      dataIndex: "status",
+      key: "status",
     },
     {
       title: "Description",
-      dataIndex: "Description",
-      key: "Description",
+      dataIndex: "description",
+      key: "description",
     },
 
     {
       title: "Action",
       dataIndex: "Action",
       key: "Action",
-      render: (text, row) => (
-        <div className="position-relative">
-          <img src={ActionIcon} alt="" />
-        </div>
-      ),
+      render: (text, row) => <TableAction data={row} />,
     },
   ];
   const columns3 = [
     {
       title: "Role Name",
-      dataIndex: "RoleName",
-      key: "RoleName",
+      dataIndex: "name",
+      key: "name",
     },
     {
       title: "Description",
@@ -130,38 +142,34 @@ function UserManagement(props) {
   const columns = [
     {
       title: "Full Name",
-      dataIndex: "Fullname",
-      key: "Fullname",
+      dataIndex: "fullName",
+      key: "fullName",
     },
     {
       title: "Username",
-      dataIndex: "Username",
-      key: "Username",
+      dataIndex: "userName",
+      key: "userName",
     },
     {
       title: "Email",
-      dataIndex: "Email",
-      key: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
       title: "Role",
-      dataIndex: "Role",
-      key: "Role",
+      dataIndex: "role",
+      key: "role",
     },
-    {
-      title: "Created Date",
-      dataIndex: "CreatedDate",
-      key: "CreatedDate",
-    },
+
     {
       title: "Gender",
-      dataIndex: "Gender",
-      key: "Gender",
+      dataIndex: "gender",
+      key: "gender",
     },
     {
       title: "Team",
-      dataIndex: "Team",
-      key: "Team",
+      dataIndex: "team",
+      key: "team",
     },
     {
       title: "Action",
@@ -309,10 +317,6 @@ function UserManagement(props) {
     },
   ];
 
-  const [expandedKeys, setExpandedKeys] = useState(["", ""]);
-  const [checkedKeys, setCheckedKeys] = useState([""]);
-  const [selectedKeys, setSelectedKeys] = useState([]);
-  const [autoExpandParent, setAutoExpandParent] = useState(true);
   const onExpand = (expandedKeysValue) => {
     console.log("onExpand", expandedKeysValue); // if not set autoExpandParent to false, if children expanded, parent can not collapse.
     // or, you can remove all expanded children keys.
@@ -330,6 +334,50 @@ function UserManagement(props) {
     console.log("onSelect", info);
     setSelectedKeys(selectedKeysValue);
   };
+
+  function createNewUser(values) {
+    console.log(values);
+    Api.post("/Users/Create", values)
+      .then((res) => {
+        message.success("User added successfully!");
+        setUserModal(false);
+        setRefresh(!refresh);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    Api.get("/Teams/Team")
+      .then((res) => {
+        setTeams(res.data);
+
+        console.log(res.data);
+
+        console.log(teams);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    Api.get("/Role")
+      .then((res) => {
+        setRole(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    Api.get("/Users")
+      .then((res) => {
+        setUsers(res.data);
+        setDataSource(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [refresh]);
 
   return (
     <div>
@@ -368,10 +416,29 @@ function UserManagement(props) {
                   </div>
                   <div className="data-table" style={{ marginTop: "60px" }}>
                     <Table
-                      dataSource={dataSource2}
+                      dataSource={teams}
                       columns={columns2}
                       pagination={false}
                     />
+                  </div>
+                  <div className="pagination-wrapper">
+                    <div className="d-flex justify-content-end pagination">
+                      <img
+                        src={LeftIcon}
+                        style={{ marginRight: "10px" }}
+                        alt=""
+                      />
+                      <div className="paginate-num-box">1</div>
+                      <div className="paginate-num-box2">2</div>
+                      <div className="paginate-num-box2">3</div>
+                      <img
+                        style={{ marginLeft: "10px" }}
+                        src={LeftIcon1}
+                        alt=""
+                      />
+
+                      <div className="d-flex images-wrap"></div>
+                    </div>
                   </div>
                 </TabPane>
                 <TabPane tab="Users" key="2">
@@ -409,6 +476,25 @@ function UserManagement(props) {
                       pagination={false}
                     />
                   </div>
+                  <div className="pagination-wrapper">
+                    <div className="d-flex justify-content-end pagination">
+                      <img
+                        src={LeftIcon}
+                        style={{ marginRight: "10px" }}
+                        alt=""
+                      />
+                      <div className="paginate-num-box">1</div>
+                      <div className="paginate-num-box2">2</div>
+                      <div className="paginate-num-box2">3</div>
+                      <img
+                        style={{ marginLeft: "10px" }}
+                        src={LeftIcon1}
+                        alt=""
+                      />
+
+                      <div className="d-flex images-wrap"></div>
+                    </div>
+                  </div>
                 </TabPane>
                 <TabPane tab="Roles" key="3">
                   <div className="d-flex float-end">
@@ -440,10 +526,29 @@ function UserManagement(props) {
                   </div>
                   <div className="data-table" style={{ marginTop: "60px" }}>
                     <Table
-                      dataSource={dataSource3}
+                      dataSource={role}
                       columns={columns3}
                       pagination={false}
                     />
+                  </div>
+                  <div className="pagination-wrapper">
+                    <div className="d-flex justify-content-end pagination">
+                      <img
+                        src={LeftIcon}
+                        style={{ marginRight: "10px" }}
+                        alt=""
+                      />
+                      <div className="paginate-num-box">1</div>
+                      <div className="paginate-num-box2">2</div>
+                      <div className="paginate-num-box2">3</div>
+                      <img
+                        style={{ marginLeft: "10px" }}
+                        src={LeftIcon1}
+                        alt=""
+                      />
+
+                      <div className="d-flex images-wrap"></div>
+                    </div>
                   </div>
                 </TabPane>
               </Tabs>
@@ -575,91 +680,101 @@ function UserManagement(props) {
       </Modal>
 
       <Modal
-        title="Create Team"
+        title="Create User"
         visible={userModal}
         onCancel={() => setUserModal(false)}
         closable
         className="create-user-model"
         footer={false}
       >
-        <Form>
+        <Form onFinish={createNewUser}>
           <div className="d-flex">
             <div>
               <p className="mt1">Full Name</p>
-              <Form.Item>
-                <Input className="tm-input"></Input>
+              <Form.Item name="fullName">
+                <Input className="tm-input" required></Input>
               </Form.Item>
             </div>
             <div style={{ marginLeft: "20px" }}>
               <p className="mt1">User Name</p>
-              <Form.Item>
-                <Input className="tm-input"></Input>
+              <Form.Item name="userName">
+                <Input className="tm-input" required></Input>
               </Form.Item>
             </div>
             <div style={{ marginLeft: "20px" }}>
               <p className="mt1">Email</p>
-              <Form.Item>
-                <Input className="tm-input"></Input>
+              <Form.Item name="email">
+                <Input className="tm-input" required></Input>
               </Form.Item>
             </div>
           </div>
           <div className="d-flex">
             <div>
               <p className="mt1">Role</p>
-              <Form.Item>
+              <Form.Item name="role">
                 <Select
+                  required
                   defaultValue=""
-                  // className="assigned-by"
                   style={{ width: 214, height: "48px" }}
                 >
-                  <Option value="lucy">
-                    <Checkbox>user 1</Checkbox>
-                  </Option>
-                  <Option value="lucy">
-                    <Checkbox>user 2</Checkbox>
-                  </Option>
-                  <Option value="lucy">
-                    <Checkbox>user 3</Checkbox>
-                  </Option>
-                  <Option value="lucy">
-                    <Checkbox>user 4</Checkbox>
-                  </Option>
+                  {role.length > 0 &&
+                    role.map((role) => (
+                      <Option value={role.id}>
+                        <Checkbox>{role.name}</Checkbox>
+                      </Option>
+                    ))}
                 </Select>
               </Form.Item>
             </div>
             <div style={{ marginLeft: "20px" }}>
               <p className="mt1">Gender</p>
-              <Form.Item>
+              <Form.Item name="gender">
                 <Select
+                  required
                   defaultValue=""
-                  // className="assigned-by"
                   style={{ width: 214, height: "48px" }}
                 >
-                  <Option value="lucy">Male</Option>
-                  <Option value="lucy">Female</Option>
+                  <Option value={1}>Male</Option>
+                  <Option value={0}>Female</Option>
                 </Select>
               </Form.Item>
             </div>
             <div style={{ marginLeft: "20px" }}>
               <p className="mt1">Select Team</p>
-              <Form.Item>
+              <Form.Item name="teamId">
                 <Select
+                  required
                   defaultValue=""
-                  // className="assigned-by"
                   style={{ width: 214, height: "48px" }}
                 >
-                  <Option value="lucy">Team 1</Option>
-                  <Option value="lucy">Team 1</Option>
-                  <Option value="lucy">Team 1</Option>
-                  <Option value="lucy">Team 1</Option>
+                  {teams.length > 0 &&
+                    teams.map((team) => (
+                      <Option value={team.teamId}>{team.teamName}</Option>
+                    ))}
                 </Select>
+              </Form.Item>
+            </div>
+          </div>
+          <div className="d-flex">
+            <div>
+              <p className="mt1">Password</p>
+              <Form.Item name="password">
+                <Input required type="password" className="tm-input"></Input>
+              </Form.Item>
+            </div>
+            <div style={{ marginLeft: "20px" }}>
+              <p className="mt1">Confrim Password</p>
+              <Form.Item name="confirmPassword">
+                <Input type="password" className="tm-input"></Input>
               </Form.Item>
             </div>
           </div>
 
           <div class="btns-wrap" style={{ marginTop: "53px" }}>
             <Button className="btn-cancel"> Reset</Button>
-            <Button className="btn-create"> Create</Button>
+            <Button className="btn-create" htmlType="submit">
+              Create
+            </Button>
           </div>
         </Form>
       </Modal>
@@ -713,3 +828,61 @@ function UserManagement(props) {
 }
 
 export default UserManagement;
+
+const TableAction = ({ data }) => {
+  const [refresh, setRefresh] = useState(false);
+
+  function deleteTeam(id) {
+    console.log(id);
+    Api.delete("/Teams/" + id)
+      .then((res) => {
+        message.success("deleted successsfully");
+
+        setRefresh(!refresh);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  const [action, setAction] = useState(false);
+  return (
+    <div className="position-relative">
+      <img
+        style={{ cursor: "pointer" }}
+        src={ActionIcon}
+        alt=""
+        onClick={() => setAction(!action)}
+      />
+
+      {action && (
+        <div
+          style={{
+            position: "absolute",
+            width: "77px",
+            height: "78px",
+            background: "#FFFFFF",
+            boxShadow: "0px 5px 10px #65656529",
+            border: "1px solid #F2F2F2",
+            borderRadius: "2px 0px 2px 2px",
+            left: "63px",
+
+            zIndex: "20",
+          }}
+        >
+          <p
+            style={{ fontSize: "12px", marginBottom: "0px" }}
+            onClick={deleteTeam}
+          >
+            Edit
+          </p>
+          <p
+            style={{ fontSize: "12px", marginBottom: "0px" }}
+            onClick={() => deleteTeam(data.teamId)}
+          >
+            Delete
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
